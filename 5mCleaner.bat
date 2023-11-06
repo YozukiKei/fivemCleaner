@@ -11,7 +11,6 @@ set _time=%_time2:~0,2%%_time2:~3,2%%_time2:~6,2%
 set _backup=_backup%_day%%_time%
 
 :init
-  @rem testCode nad trace
   if %testmode%==1 set target=%~dp0
   echo Initialized.....testmode:%testmode% automode:%automode%
   echo gta5Folder is: %target%
