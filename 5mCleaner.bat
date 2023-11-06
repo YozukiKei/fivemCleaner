@@ -1,5 +1,5 @@
 @rem auther:Yozuki Kei, 2023/11/05
-rem 5mCleaner ver1.1 by YozukiKei
+rem fivemCleaner ver1.1 by YozukiKei
 @echo off
 
 set target=%LOCALAPPDATA%\FiveM\FiveM.app\data
