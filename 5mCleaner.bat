@@ -1,44 +1,53 @@
 @rem auther:Yozuki Kei, 2023/11/05
-rem Gta5Cleaner ver1.0 by YozukiKei
+rem 5mCleaner ver1.1 by YozukiKei
 @echo off
 
 set target=%LOCALAPPDATA%\FiveM\FiveM.app\data
-set testmode=1
-set delmode=0
-
-@rem testCode
-if %testmode% == 1 set target=%~dp0
-echo Initialized.....testmode:%testmode% delmode:%delmode%;
-call :init
+set testmode=0
+set automode=0
+set _day=%date:~0,4%%date:~5,2%%date:~8,2%
+set _time2=%time: =0%
+set _time=%_time2:~0,2%%_time2:~3,2%%_time2:~6,2%
+set _backup=_backup%_day%%_time%
 
 :init
-  echo Target is: %target%;
-  cd /d %target%
-  if not exist _backup (
-    mkdir _backup
-    echo Created _backup folder;
-  )
+  @rem testCode nad trace
+  if %testmode%==1 set target=%~dp0
+  echo Initialized.....testmode:%testmode% automode:%automode%
+  echo gta5Folder is: %target%
+  echo backupFolder is: %_backup%
+  cd %target%
 
-:moveAll
+:move
   @rem if exist cache folder, I think all folder is available.
   if exist cache (
-    move ./cache ./_backup
-    move ./server-cache ./_backup
-    move ./server-cache-priv ./_backup
+    if not exist %_backup% (
+      mkdir %_backup%
+      echo Created %_backup% folder;
+    )
+    move ./cache ./%_backup%
+    move ./server-cache ./%_backup%
+    move ./server-cache-priv ./%_backup%
   ) else (
-    echo Nothing cache folders;
+    echo Not found cache folders
+    goto :end
   )
-
-echo Press anyKey to delete _backup folder;
-pause
 
 :delBack
-  if exist _backup (
-    rd _backup
+  echo Press anyKey to delete %_backup% folder
+  if %automode%==0 pause
+
+  if exist %_backup% (
+    rd /s /q %_backup%
+    echo Deleted %_backup% folder
   ) else (
-    echo Nothing _baclup folder;
+    echo -----
+    echo [Error] Not found %_backup% folder
+    echo -----
   )
 
-echo Deleted;
+:end
+  echo Press anyKey to finish
+  pause
+
 exit
-@rem exit
