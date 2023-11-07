@@ -11,11 +11,11 @@ set _time=%_time2:~0,2%%_time2:~3,2%%_time2:~6,2%
 set _backup=_backup%_day%%_time%
 
 :init
-  if %testmode%==1 set target=%~dp0
+  if %testmode%==1 set target=%~dp0\test
   echo Initialized.....testmode:%testmode% automode:%automode%
   echo gta5Folder is: %target%
   echo backupFolder is: %_backup%
-  cd %target%
+  cd /d %target%
 
 :move
   @rem if exist cache folder, I think all folder is available.
