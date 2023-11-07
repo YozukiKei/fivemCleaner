@@ -1,6 +1,9 @@
-@rem auther:Yozuki Kei, 2023/11/05
-rem fivemCleaner ver1.1 by YozukiKei
 @echo off
+@rem auther:Yozuki Kei, 2023/11/05
+echo ----------
+echo fivemCleaner by YozukiKei
+echo https://github.com/YozukiKei/fivemCleaner
+echo ----------
 
 set target=%LOCALAPPDATA%\FiveM\FiveM.app\data
 set testmode=0
