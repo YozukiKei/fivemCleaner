@@ -37,7 +37,7 @@
   <table>
       <tr>
           <th>作者</th>
-          <td>夜月京（よづきけい）</td>
+          <td>夜月ケイ（よづきけい）</td>
       </tr>
       <tr>
           <th>X (旧Twitter)</th>
